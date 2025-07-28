@@ -23,20 +23,26 @@
             left: 10px;
             display: flex;
             gap: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 8px;
+            border-radius: 8px;
         }
         #toolbar button {
             padding: 8px 12px;
-            font-size: 16px;
+            font-size: 20px;
             cursor: pointer;
             border: 1px solid #ccc;
             border-radius: 5px;
+            line-height: 1;
         }
     </style>
 </head>
 <body>
     <div id="toolbar">
-        <button id="drawBtn">✏️</button>
-        <button id="eraseBtn">🧼</button>
+        <button id="eraseBtn" title="Erase">🧼</button>
+        <button id="blackBtn" title="Black">⚫</button>
+        <button id="redBtn" title="Red">🔴</button>
+        <button id="blueBtn" title="Blue">🔵</button>
     </div>
 
     <canvas id="drawCanvas"></canvas>
@@ -44,11 +50,15 @@
     <script>
         const canvas = document.getElementById('drawCanvas');
         const ctx = canvas.getContext('2d');
-        const drawBtn = document.getElementById('drawBtn');
+        
         const eraseBtn = document.getElementById('eraseBtn');
+        const blackBtn = document.getElementById('blackBtn');
+        const redBtn = document.getElementById('redBtn');
+        const blueBtn = document.getElementById('blueBtn');
 
         let isDrawing = false;
-        let mode = 'draw'; 
+        let mode = 'draw';
+        let currentColor = '#000000';
 
         function resizeCanvas() {
             canvas.width = window.innerWidth;
@@ -70,11 +80,11 @@
 
             if (mode === 'draw') {
                 ctx.globalCompositeOperation = 'source-over';
-                ctx.strokeStyle = '#000';
+                ctx.strokeStyle = currentColor;
                 ctx.lineWidth = 3;
             } else if (mode === 'erase') {
-                ctx.globalCompositeOperation = 'destination-out'; 
-                ctx.lineWidth = 25; 
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.lineWidth = 25;
             }
             
             ctx.lineCap = 'round';
@@ -83,24 +93,25 @@
             ctx.beginPath();
             ctx.moveTo(e.clientX, e.clientY);
         }
-        
-        // Event Listner for Draw Button
-        drawBtn.addEventListener('click', () => {
+        eraseBtn.addEventListener('click', () => { mode = 'erase'; });
+        blackBtn.addEventListener('click', () => {
             mode = 'draw';
+            currentColor = '#000000';
         });
-        // Event Listner for Erase Button
-        eraseBtn.addEventListener('click', () => {
-            mode = 'erase';
+        redBtn.addEventListener('click', () => {
+            mode = 'draw'; 
+            currentColor = '#FF0000';
+        });
+        blueBtn.addEventListener('click', () => {
+            mode = 'draw';
+            currentColor = '#0000FF';
         });
 
-        // Canvas event listeners
         window.addEventListener('resize', resizeCanvas);
         canvas.addEventListener('mousedown', startDrawing);
         canvas.addEventListener('mouseup', stopDrawing);
         canvas.addEventListener('mousemove', draw);
         canvas.addEventListener('mouseout', stopDrawing);
-
-        // Initial resize
         resizeCanvas();
     </script>
 </body>

@@ -8,7 +8,32 @@
 * `extension.js` - this is the main file where you will provide the implementation of your command.
   * The file exports one function, `activate`, which is called the very first time your extension is activated (in this case by executing the command). Inside the `activate` function we call `registerCommand`.
   * We pass the function containing the implementation of the command as the second parameter to `registerCommand`.
+  ## Features
 
+  * Register custom commands in VS Code.
+  * Implement command logic in JavaScript.
+  * Debug and test your extension easily.
+  * Structure your extension with best practices.
+
+  ## Requirements
+
+  * [Node.js](https://nodejs.org/) installed.
+  * [Visual Studio Code](https://code.visualstudio.com/) installed.
+
+  ## Installation
+
+  1. Clone this repository.
+  2. Run `npm install` to install dependencies.
+  3. Open the folder in VS Code.
+
+  ## Usage
+
+  * Press `F5` to launch the extension in a new VS Code window.
+  * Use the command palette to run your registered commands.
+
+  ## Contributing
+
+  Contributions are welcome! Please submit issues or pull requests for improvements.
 ## Get up and running straight away
 
 * Press `F5` to open a new window with your extension loaded.
