@@ -1,67 +1,41 @@
-# Welcome to your VS Code Extension
+# DrawPad for VS Code ✏️
 
-## What's in the folder
+A simple, toggleable drawing canvas that lives inside your Visual Studio Code editor. Perfect for quick notes, diagrams, and rough work without ever leaving your development environment.
 
-* This folder contains all of the files necessary for your extension.
-* `package.json` - this is the manifest file in which you declare your extension and command.
-  * The sample plugin registers a command and defines its title and command name. With this information VS Code can show the command in the command palette. It doesn’t yet need to load the plugin.
-* `extension.js` - this is the main file where you will provide the implementation of your command.
-  * The file exports one function, `activate`, which is called the very first time your extension is activated (in this case by executing the command). Inside the `activate` function we call `registerCommand`.
-  * We pass the function containing the implementation of the command as the second parameter to `registerCommand`.
-  ## Features
+![DrawPad Demo](https://i.imgur.com/link_to_your_demo.gif) 
+---
 
-  * Register custom commands in VS Code.
-  * Implement command logic in JavaScript.
-  * Debug and test your extension easily.
-  * Structure your extension with best practices.
+## ## Features
 
-  ## Requirements
+* **Instant Drawing Canvas**: Open a drawing pad right next to your code.
+* **Simple Toolbar**: Easily switch between drawing, erasing, and changing colors.
+* **Color Palette**: Includes black, red, and blue color options for drawing.
+* **Eraser Tool**: Clean up mistakes with a large eraser brush.
+* **Editor Integration**: Activate the canvas with a simple icon in the editor's title bar.
 
-  * [Node.js](https://nodejs.org/) installed.
-  * [Visual Studio Code](https://code.visualstudio.com/) installed.
+---
 
-  ## Installation
+## ## Installation
 
-  1. Clone this repository.
-  2. Run `npm install` to install dependencies.
-  3. Open the folder in VS Code.
+1.  Open the **Extensions** view in VS Code (`Ctrl+Shift+X`).
+2.  Click the three-dots menu (`...`) at the top-right of the Extensions view..
+3.  Select `"Install from VSIX..."`.
+4. In the file dialog that opens, find and select the `.vsix` file you received.
+5. After installation, VS Code will prompt you to reload. Click the **"Reload Now"** button.
 
-  ## Usage
+---
 
-  * Press `F5` to launch the extension in a new VS Code window.
-  * Use the command palette to run your registered commands.
+## ## How to Use
 
-  ## Contributing
+1.  Once installed, open any text file.
+2.  Click the **pencil icon (✏️)** that appears in the top-right corner of the editor panel.
+3.  The drawing panel will open beside your editor.
+4.  Use the toolbar buttons within the drawing panel to select your tool (draw/erase) and color.
 
-  Contributions are welcome! Please submit issues or pull requests for improvements.
-## Get up and running straight away
+---
 
-* Press `F5` to open a new window with your extension loaded.
-* Run your command from the command palette by pressing (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and typing `Hello World`.
-* Set breakpoints in your code inside `extension.js` to debug your extension.
-* Find output from your extension in the debug console.
+## ## Contributing
 
-## Make changes
+Contributions are welcome! If you have ideas for new features or find any bugs, please open an issue or submit a pull request on the project's GitHub repository.
 
-* You can relaunch the extension from the debug toolbar after changing code in `extension.js`.
-* You can also reload (`Ctrl+R` or `Cmd+R` on Mac) the VS Code window with your extension to load your changes.
-
-## Explore the API
-
-* You can open the full set of our API when you open the file `node_modules/@types/vscode/index.d.ts`.
-
-## Run tests
-
-* Install the [Extension Test Runner](https://marketplace.visualstudio.com/items?itemName=ms-vscode.extension-test-runner)
-* Open the Testing view from the activity bar and click the Run Test" button, or use the hotkey `Ctrl/Cmd + ; A`
-* See the output of the test result in the Test Results view.
-* Make changes to `test/extension.test.js` or create new test files inside the `test` folder.
-  * The provided test runner will only consider files matching the name pattern `**.test.js`.
-  * You can create folders inside the `test` folder to structure your tests any way you want.
-
-## Go further
-
- * [Follow UX guidelines](https://code.visualstudio.com/api/ux-guidelines/overview) to create extensions that seamlessly integrate with VS Code's native interface and patterns.
- * [Publish your extension](https://code.visualstudio.com/api/working-with-extensions/publishing-extension) on the VS Code extension marketplace.
- * Automate builds by setting up [Continuous Integration](https://code.visualstudio.com/api/working-with-extensions/continuous-integration).
- * Integrate to the [report issue](https://code.visualstudio.com/api/get-started/wrapping-up#issue-reporting) flow to get issue and feature requests reported by users.
+---

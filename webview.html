@@ -50,7 +50,7 @@
     <script>
         const canvas = document.getElementById('drawCanvas');
         const ctx = canvas.getContext('2d');
-        
+        const vscode = acquireVsCodeApi();
         const eraseBtn = document.getElementById('eraseBtn');
         const blackBtn = document.getElementById('blackBtn');
         const redBtn = document.getElementById('redBtn');
@@ -61,8 +61,10 @@
         let currentColor = '#000000';
 
         function resizeCanvas() {
+            const dataUrl = canvas.toDataURL();
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
+            restoreDrawing(dataUrl);
         }
 
         function startDrawing(e) {
@@ -71,8 +73,22 @@
         }
 
         function stopDrawing() {
+            if(!isDrawing) return;
             isDrawing = false;
             ctx.beginPath();
+            vscode.postMessage({
+                command: 'saveDrawing',
+                data: canvas.toDataURL() 
+            });
+        }
+
+        function restoreDrawing(dataUrl) {
+            if (!dataUrl) return;
+            const img = new Image();
+            img.onload = () => {
+                ctx.drawImage(img, 0, 0);
+            };
+            img.src = dataUrl;
         }
 
         function draw(e) {
@@ -107,6 +123,13 @@
             currentColor = '#0000FF';
         });
 
+        window.addEventListener('load', () => {
+            const savedDrawing = document.body.getAttribute('data-saved-drawing');
+            if (savedDrawing) {
+                restoreDrawing(savedDrawing);
+            }
+        });
+        
         window.addEventListener('resize', resizeCanvas);
         canvas.addEventListener('mousedown', startDrawing);
         canvas.addEventListener('mouseup', stopDrawing);
